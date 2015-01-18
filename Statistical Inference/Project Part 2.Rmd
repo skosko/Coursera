@@ -1,0 +1,58 @@
+---
+title: "Statistical Inference Course Project Part 2"
+author: "Sven Koerbitz"
+output: pdf_document
+---
+##Overview
+Now in the second portion of the class, we're going to analyze the ToothGrowth data in the R datasets package. 
+
+##1. Load the ToothGrowth data and perform some basic exploratory data analyses 
+```{r}
+library(datasets)
+library(ggplot2)
+data(ToothGrowth)
+plot <- ggplot(ToothGrowth, aes(x=factor(dose),y=len,fill=factor(dose)))
+plot + geom_boxplot() + 
+     facet_grid(.~supp) +
+     scale_x_discrete("Dose") +   
+     scale_y_continuous("Length")  
+```
+
+##2. Provide a basic summary of the data.
+```{r}
+head(ToothGrowth)
+str(ToothGrowth)
+summary(ToothGrowth)
+ToothGrowth$dose <- as.factor(ToothGrowth$dose)
+table(ToothGrowth$supp, ToothGrowth$dose)
+```
+
+##3. Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose.
+```{r}
+# T-Test by Supp Type
+t.test(len ~ supp, data = ToothGrowth)
+
+# Subsetting Data by Dose
+dose0.5 = subset(ToothGrowth, dose == 0.5)
+dose1.0 = subset(ToothGrowth, dose == 1.0)
+dose2.0 = subset(ToothGrowth, dose == 2.0)
+
+# T-Test Supp by Dose
+t.test(len~supp, data=dose0.5)
+t.test(len~supp, data=dose1.0)
+t.test(len~supp, data=dose2.0)
+```
+Given a dose of 0.5 the null hypothesis that the supplement type (OJ/VC) has no influence on the growth of teeth can be rejected because the p-value is 0.006359 which is way below a significance level of 0.05.
+
+Given a dose of 1.0 the null hypothesis that the supplement type (OJ/VC) has no influence on the growth of teeth can be rejected because the p-value is 0.001038 which is way below a significance level of 0.05.
+
+Given a dose of 2.0 the null hypothesis that the supplement type (OJ/VC) has no influence on the growth of teeth can not be rejected because the p-value is 0.9639 which is above a significance level of 0.05. The data is not conclusive.
+
+##4. State your conclusions and the assumptions needed for your conclusions. 
+Based on the basic exploratory data analyses the assumption was made that
+  - the growth of teeth depends on the dose (Higher dose = longer theeth) and
+  - the supplement type OJ has a higher effect on the growth of teeth than the supplement type VC
+  
+Based on the hypothesis tests it can be concluded that 
+  - the growth of teeth increases with the dose and
+  - the supplement type OJ has a higher effect in the doses of 0.5 and 1.0 but not in doses of 2.0
