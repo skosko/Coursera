@@ -1,6 +1,6 @@
 # Statistical Inference Course Projects
 
-This is the project for the statistical inference class. In it, you will use simulation to explore inference and do some simple inferential data analysis. The project consists of two parts:
+This is the project for the statistical inference class on Coursera. In it, you will use simulation to explore inference and do some simple inferential data analysis. The project consists of two parts:
 
 1. A simulation exercise.
 2. Basic inferential data analysis.
@@ -16,11 +16,11 @@ Illustrate via simulation and associated explanatory text the properties of the 
 2. Show how variable the sample is (via variance) and compare it to the theoretical variance of the distribution.
 3. Show that the distribution is approximately normal.
 
-In point 3, focus on the difference between the distribution of a large collection of random exponentials and the distribution of a large collection of averages of 40 exponentials. 
+In point 3, focus on the difference between the distribution of a large collection of random exponentials and the distribution of a large collection of averages of 40 exponentials.
 
 ##Basic Inferential Data Analysis
-Now in the second portion of the class, we're going to analyze the ToothGrowth data in the R datasets package. 
-- Load the ToothGrowth data and perform some basic exploratory data analyses 
+Now in the second portion of the class, we're going to analyze the ToothGrowth data in the R datasets package.
+- Load the ToothGrowth data and perform some basic exploratory data analyses
 - Provide a basic summary of the data.
 - Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering)
-- State your conclusions and the assumptions needed for your conclusions. 
+- State your conclusions and the assumptions needed for your conclusions.
